@@ -1,0 +1,49 @@
+<div class="limiter">
+  <div class="container-login100">
+    <div class="wrap-login100">
+      <div class="login100-form-title" style="background-image: url(../../assets/images/bg-01.jpg);">
+        <span class="login100-form-title-1">
+          Poll
+        </span>
+      </div>
+
+      <form class="login100-form validate-form">
+        <div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
+          <span class="label-input100">Username</span>
+          <div>
+              <input  autocomplete="off" class="effect-1 form-control" id="exampleInputEmail1" name="user"
+              [(ngModel)]="model.username" #username="ngModel" required placeholder="Username" type="text" placeholder="Username">
+                <span class=" focus-border"></span>
+           </div>
+          <!-- <input autocomplete="off" type="text" class="form-control" id="exampleInputEmail1" name="user" placeholder="Username"
+            [(ngModel)]="model.username" #username="ngModel" required>
+          <span class="focus-input100"></span> -->
+        </div>
+
+        <div class="wrap-input100 validate-input m-b-18" data-validate="Password is required">
+          <span class="label-input100">Password</span>
+          <div>
+              <input  autocomplete="off" type="password" class="effect-1 form-control" id="exampleInputPassword1" name="pass" placeholder="Password" 
+               name="pass" [(ngModel)]="model.password"
+              #password="ngModel" required>
+                <span class=" focus-border"></span>
+           </div>
+          <!-- <input autocomplete="off" type="password" class="form-control" id="exampleInputPassword1" name="pass" [(ngModel)]="model.password"
+            #password="ngModel" placeholder="Password" required>
+          <span class="focus-input100"></span> -->
+        </div>
+
+        <div class="flex-sb-m w-full p-b-30">
+          <div class="contact100-form-checkbox">
+            <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+          </div>
+
+        </div>
+
+        <div class="container-login100-form-btn">
+          <button type="submit" class="login100-form-btn" (click)="login()">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

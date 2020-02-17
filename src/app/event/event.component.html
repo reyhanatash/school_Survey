@@ -1,0 +1,194 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6" style="margin-top: 2em;">
+      <div class="card">
+        <div class="card-header">
+          <h4>Create Event </h4>
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="name">Event Name</label>
+            <input [(ngModel)]="model.name" type="text" class="form-control" id="name" placeholder="Name">
+          </div>
+
+          <div class="form-group">
+            <label for="category">Category</label>
+            <select name="category" type="text" class="form-control" id="category" placeholder="" [(ngModel)]="selectedCategory">
+              <option *ngFor="let c of categorise" [ngValue]="c">{{c.FLD_CATEGORY}}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="location">Location</label>
+            <select name="location" type="text" class="form-control" id="location" placeholder="" [(ngModel)]="selectedLocation">
+              <option *ngFor="let c of locations" [ngValue]="c">{{c.locationName}}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="fromDate">Date Time Range</label>
+            <!-- <input type="date" class="form-control" id="fromDate" placeholder="" [(ngModel)]="start"> -->
+
+
+
+            <input class="form-control" placeholder="Date Time Range:" [(ngModel)]="dateTimeRange" [selectMode]="'range'"
+              [owlDateTimeTrigger]="dtRange1" [owlDateTime]="dtRange1">
+            <owl-date-time #dtRange1></owl-date-time>
+
+          </div>
+
+
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea type="text" class="form-control" id="description" placeholder="" [(ngModel)]="model.description">
+          </textarea>
+          </div>
+          <button *ngIf="!isupdate" class="btn btn-primary" (click)="createEvent()">Create</button>
+          <button *ngIf="isupdate" class="btn btn-primary" (click)="editEveClick()">Edit</button>&#160;
+          <button *ngIf="isupdate" class="btn btn-danger" (click)="cancel()">Cancel</button>
+
+          <button data-toggle="modal" data-target=".bd-example-modal-lg" class="btn btn-primary" style="float: right;">Set
+            Devices</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6" style="margin-top: 2em;">
+      <div class="card">
+
+        <div class="card-header">
+          <h4>Events List</h4>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table datatable [dtTrigger]="dtTrigger" class="table table-striped">
+              <thead class="thead-dark">
+                <tr>
+                  <td>#</td>
+                  <td>Name</td>
+                  <td>Devices Count</td>
+                  <td>Location</td>
+                  <td></td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let row of eventList; let i = index">
+                  <td>
+                    {{i+1}}
+                  </td>
+                  <td>
+                    {{row.name}}
+                  </td>
+                  <td>
+                    {{row.deviceCount}}
+                  </td>
+                  <td>
+                    {{row.locationName}}
+                  </td>
+                  <td style="min-width: 70px">
+                    <!-- <a data-toggle="modal" data-target="#detaiModal" (click)="detailEve(i)">
+                      <i class="fa fa-eye text-primary" style="cursor: pointer;"></i>&#160;
+                    </a> -->
+
+
+                    <i class="fa fa-edit text-primary" style="cursor: pointer;padding-right: 3px;" (click)="editEve(i)"></i>&#160;
+                    <i class="fa fa-remove text-danger" style="cursor: pointer" (click)="deleteEve(i)"></i>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- The Modal -->
+<div class="modal" id="detaiModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Event Detail</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Name:</label>
+          <p class="text-info">{{eventName}}</p>
+        </div>
+        <div class="form-group">
+          <label>Category:</label>
+          <p class="text-info">{{category}}</p>
+        </div>
+        <div class="form-group">
+          <label>Location:</label>
+          <p class="text-info">{{location}}</p>
+        </div>
+        <div class="form-group">
+          <label>From Date:</label>
+          <p class="text-info">{{startDate}}</p>
+        </div>
+        <div class="form-group">
+          <label>To Date:</label>
+          <p class="text-info">{{endDate}}</p>
+        </div>
+        <div class="form-group">
+          <label>Description:</label>
+          <p class="text-info">{{description}}</p>
+        </div>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+
+      </div>
+      <div class="modal-body">
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead class="thead-dark">
+              <tr>
+                <td>#</td>
+                <td>serial</td>
+                <td>Code</td>
+                <td><input id="masterCheck" type="checkbox" (click)="toggleSelection()"></td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let row of deviceList; let i = index">
+                <td>
+                  {{i+1}}
+                </td>
+                <td>
+                  {{row.serialNo}}
+                </td>
+                <td>
+                  {{row.proprtyNo}}
+                </td>
+                <td>
+                  <input id="check{{row.id}}" class="deviceCheck" type="checkbox" (change)="addtolist(row.id)">
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Set</button>
+      </div>
+    </div>
+  </div>
+</div>

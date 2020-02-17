@@ -1,0 +1,33 @@
+.category-table
+{
+    margin-top: 25px !important;
+    margin-bottom: 20px !important;
+    
+}
+
+
+.table-responsive
+{
+    overflow-x: hidden
+}
+.detailmodal
+{
+    padding: 5px
+}
+
+.btnFormCategory
+{
+    margin-bottom: 16px
+}
+
+.modal-content
+{
+    box-shadow: 0px 0px 12px 0px white;
+}
+
+.detailModal-btn:focus
+{
+  box-shadow: none !important;
+  outline: none !important;
+}
+

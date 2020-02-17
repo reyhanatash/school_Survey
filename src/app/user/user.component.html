@@ -1,0 +1,88 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6" style="margin-top: 2em;">
+      <div class="card">
+        <div class="card-header">
+          <h4>Create Manage </h4>
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="name">Type</label>
+            <select [(ngModel)]="selectedType" class="form-control">
+              <option value="1">Admin</option>
+              <option value="2">Manager</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="name">User Name</label>
+            <input [(ngModel)]="model.username" type="text" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label for="category">Password</label>
+            <input class="form-control" type="password" [(ngModel)]="model.password">
+          </div>
+          <div class="form-group">
+            <label for="category">Confirm Password</label>
+            <input class="form-control" type="password" [(ngModel)]="model.repassword">
+          </div>
+          <div class="form-group" *ngIf="selectedType === '2'">
+            <label for="location">Location</label>
+            <select name="location" type="text" class="form-control" id="location" placeholder="" [(ngModel)]="selectedLocation">
+              <option *ngFor="let c of locations" [ngValue]="c">{{c.locationName}}</option>
+            </select>
+          </div>
+
+
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea type="text" class="form-control" id="description" placeholder="" [(ngModel)]="model.description">
+            </textarea>
+          </div>
+          <button *ngIf="!isupdate" class="btn btn-primary" (click)="createManager()">Create</button>
+          <button *ngIf="isupdate" class="btn btn-primary" (click)="editManClick()">Edit</button>&#160;
+          <button *ngIf="isupdate" class="btn btn-danger" (click)="cancel()">Cancel</button>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6" style="margin-top: 2em;">
+      <div class="card">
+
+        <div class="card-header">
+          <h4>Managers List</h4>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table datatable [dtTrigger]="dtTrigger" class="table table-striped">
+              <thead class="thead-dark">
+                <tr>
+                  <td>#</td>
+                  <td>UserName</td>
+                  <td>Location</td>
+                  <td></td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let row of managers; let i = index">
+                  <td>
+                    {{i+1}}
+                  </td>
+                  <td>
+                    {{row.FLD_USERNAME}}
+                  </td>
+                  <td>
+                    {{row.FLD_LOCATION_NAME}}
+                  </td>
+                  <td style="min-width: 70px">
+                    <i class="fa fa-remove text-danger" style="cursor: pointer" (click)="deleteManager(i)"></i>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,173 @@
+
+<!-- <div class="wrapper">
+  <!-- <div class="sidebar" data-image="../assets/img/sidebar-5.jpg"></div> -->
+    <!--
+        Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
+
+        Tip 2: you can also add an image using data-image tag
+    -->
+    <!-- <div class="sidebar-wrapper">
+      <div class="logo">
+        <a class="simple-text">
+          Poll
+        </a>
+      </div>
+      <ul class="nav">
+        <li class="nav-item active">
+          <a class="nav-link">
+            <i class="nc-icon nc-chart-pie-35"></i>
+            <p>Dashboard</p>
+          </a>
+        </li>
+
+      </ul>
+    </div> -->
+  <!-- </div> --> 
+  <div class="main-panel">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg " color-on-scroll="500">
+      <div class=" container-fluid  ">
+        <a class="navbar-brand"  style="color:#864ecb  !important"> Dashboard </a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" aria-controls="navigation-index"
+          aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-bar burger-lines"></span>
+          <span class="navbar-toggler-bar burger-lines"></span>
+          <span class="navbar-toggler-bar burger-lines"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navigation">
+          <ul class="nav navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="dropdown">
+                <span class="d-lg-none">Dashboard</span>
+              </a>
+            </li>
+
+          </ul>
+          <ul class="navbar-nav ml-auto">
+
+
+            <li class="nav-item">
+              <!-- <a routerLink="/" class="nav-link" (click)="logout()">
+                <span class="no-icon">Log out</span>
+              </a> -->
+
+              <!-- <div class="btn-group">
+                <span class="fa fa-gear" style="cursor:pointer" data-toggle="dropdown"  aria-expanded="false"></span>
+                <div class="dropdown-menu dropdown-menu-right">
+                  <a style="color:black !important;font-size:13px" class="dropdown-item">change Password</a>
+                <hr style="margin: 0px;"/>
+                  <a style="color:black !important;font-size:13px" class="dropdown-item nav-link" routerLink="/"  (click)="logout()">
+                    Log out
+                  </a>
+                </div>
+              </div> -->
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- End Navbar -->
+    <div class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card card-Manager strpied-tabled-with-hover" >
+              <div class="card-header ">
+                <h4 class="card-title">Event List</h4>
+                <p class="card-category"></p>
+              </div>
+              <div class="card-body table-full-width table-responsive">
+                <div class="col-2"></div>
+                <div class="col-12">
+
+                  <table datatable [dtTrigger]="dtTrigger" class="table table-hover table-striped ">
+                    <thead>
+                      <tr>
+                        <th>Event Name</th>
+                        <th>Status</th>
+                        <th>Start Date</th>
+                        <th style="width:126px !important">Result</th>
+                      </tr>
+                    </thead>
+                    <tbody *ngFor="let row of eventList; let i = index">
+                      <tr [style.backgroundColor]="i%2==0 ? 'rgba(73, 80, 87, 0.04)':'white'"  >
+                        <td>{{row.name}}</td>
+                        <td>
+                          <div *ngIf='checkEvent(i)'>
+                            <p  class="badge badge-success proceesClass ">InProcess</p>
+                          </div>
+                          <div *ngIf='!checkEvent(i)'>
+                            <p class="badge  badge-danger finishClass ">Finished</p>
+                          </div>
+
+                        </td>
+                        <td style="font-size:14px">{{row.startDate|date}}</td>
+                        <td style="border-top:0px">
+                          <i style="color:#663399db !important"  class="eyeIcon fa fa-eye" (click)="showChart(i)"></i>
+                        </td>
+                      </tr>
+                    </tbody>
+                    <tfoot>
+
+                    </tfoot>
+                  </table>     
+                </div>
+                <div class="col-2"></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="card card-plain table-plain-bg">
+              <div class="card-header" style="margin-bottom:15px">
+                <h4 class="card-title" style="margin-bottom: 20px;" *ngIf='eventName'>QuestionList Of <span class="titleOfEvent">{{eventName}}</span></h4>
+                <p class="card-category"></p>
+              </div>
+              <div id="questions">
+                <div class="card question-card" style="box-shadow:none" *ngFor="let row of question; let i = index">
+                  <div class="card-header">
+                    <h4  class="card-title">{{row.FLD_TEXT}} <button  class="showChart btn" (click)="showCanvase(i)">show Chart</button> </h4>
+                    <p class="card-category"></p>
+                  </div>
+                  <div *ngIf="togglecanvase===i"  class="card-body">
+                    <canvas   id="canvase{{i}}"></canvas>
+                  </div>
+                  <div class="card-footer ">
+                    <hr>
+                    <div *ngIf="togglecanvase===i" class="stats">
+                      <i class="fa fa-check"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="container">
+        <nav>
+
+          <p class="copyright text-center">
+            ©
+            <script>
+              document.write(new Date().getFullYear())
+            </script>
+            <a>Jabiz Parda</a>, made with love for a better web
+          </p>
+        </nav>
+      </div>
+    </footer>
+  </div>
+  <script>
+      var lastWidth = $(window).width();
+
+      $(window).resize(function(){
+        if($(window).height()!=height){
+  
+          $('.navbar-expand-lg').css('width','79.9%');
+           
+        }
+      })      
+  </script>
+

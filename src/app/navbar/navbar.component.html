@@ -1,0 +1,181 @@
+<div class="page-wrapper chiller-theme">
+  <a
+    id="show-sidebar"
+    class="btn btn-sm btn-dark"
+    style="color: gray;background-color: #f7f7f7;border-color: gray;"
+  >
+    <i class="fa fa-bars"></i>
+  </a>
+  <nav id="sidebar" class="sidebar-wrapper">
+    <div class="sidebar-content">
+      <div class="sidebar-brand logo-inDashboard-area">
+        <img
+          class="img-responsive"
+          src="../../assets/images/logo.png"
+          style="width:70px"
+        />
+        <!-- <a>School Poll</a> -->
+        <div id="close-sidebar" style="float:right">
+          <i class="fa fa-times"></i>
+        </div>
+      </div>
+      <div class="sidebar-brand dashboardTitle"><a>School Poll</a></div>
+      <div class="sidebar-header">
+        <div class="user-pic">
+          <img
+            class="img-responsive img-rounded"
+            src="https://raw.githubusercontent.com/azouaoui-med/pro-sidebar-template/gh-pages/bootstrap4/assets/img/user.jpg"
+            alt="User picture"
+          />
+        </div>
+        <div class="user-info">
+          <span class="user-name"> {{ userName }} </span>
+          <span class="user-role">Administrator</span>
+          <span class="user-status">
+            <i class="fa fa-circle"></i> <span>Online</span>
+          </span>
+        </div>
+      </div>
+      <div class="sidebar-menu">
+        <ul>
+          <li class="header-menu"><span>General</span></li>
+          <!--
+            <li class="sidebar-dropdown">
+              <a style="color: white">
+                <i class="fa fa-tachometer"></i>
+                <span>Dashboard</span>
+
+              </a>
+              <div class="sidebar-submenu">
+                <ul>
+                  <li>
+                  <li class="nav-item"><a routerLink="/category"> Category </a></li>
+                  <li class="nav-item"><a routerLink="/poll"> Poll </a></li>
+                  <li class="nav-item"><a routerLink="/school"> School </a></li>
+                  <li class="nav-item"><a routerLink="/device"> Device </a></li>
+                  <li class="nav-item"><a routerLink="/event"> Event </a></li>
+                </ul>
+              </div>
+
+            </li>
+          -->
+          <li class="sidebar">
+            <a routerLink="/category">
+              <i
+                class="fa fa-folder-open-o nav-color"
+                style="font-size: 18px"
+              ></i>
+              <span class="nav-menuText">Category</span>
+            </a>
+          </li>
+          <li class="sidebar">
+            <a routerLink="/poll">
+              <i class="fa fa-question nav-color" style="font-size: 18px"></i>
+              <span class="nav-menuText">Poll</span>
+            </a>
+          </li>
+          <li class="sidebar">
+            <a routerLink="/school">
+              <i class="fa fa-home nav-color" style="font-size: 18px"></i>
+              <span class="nav-menuText">School</span>
+            </a>
+          </li>
+          <li class="sidebar">
+            <a routerLink="/device">
+              <i
+                class="fa fa-mobile-phone nav-color"
+                style="font-size: 18px"
+              ></i>
+              <span class="nav-menuText">Device</span>
+            </a>
+          </li>
+          <li class="sidebar">
+            <a routerLink="/event">
+              <i class="fa fa-calendar nav-color" style="font-size: 18px"></i>
+              <span class="nav-menuText">Event</span>
+            </a>
+          </li>
+          <li class="sidebar">
+            <a routerLink="/user">
+              <i class="fa fa-user nav-color" style="font-size: 18px"></i>
+              <span class="nav-menuText">Manager</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- sidebar-menu -->
+    </div>
+    <!-- sidebar-content -->
+    <div id="sidebarFooter" class="sidebar-footer">
+      <a>
+        <i class="fa fa-bell"></i>
+        <!--
+          <span class="badge badge-pill badge-warning notification">3</span>
+        -->
+      </a>
+      <a>
+        <i class="fa fa-envelope"></i>
+        <!--
+          <span class="badge badge-pill badge-success notification">7</span>
+        -->
+      </a>
+      <a data-toggle="modal" data-target="#exampleModal">
+        <i class="fa fa-cog"></i> <span class="badge-sonar"></span>
+      </a>
+      <a routerLink="/" (click)="logout()"> <i class="fa fa-power-off"></i> </a>
+    </div>
+  </nav>
+
+  <!-- Modal -->
+  <div
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">change Password</h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="">Password</label>
+            <input type="password" class="form-control" [(ngModel)]="pass" />
+          </div>
+          <div class="form-group">
+            <label for="">New Password</label>
+            <input type="password" class="form-control" [(ngModel)]="newPass" />
+          </div>
+          <div class="form-group">
+            <label for="">Confirm New Password</label>
+            <input
+              type="password"
+              class="form-control"
+              [(ngModel)]="cNewPass"
+            />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            Close
+          </button>
+          <button type="button" class="btn btn-primary" (click)="changePass()">
+            Save changes
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

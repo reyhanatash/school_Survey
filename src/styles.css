@@ -1,0 +1,54 @@
+/* You can add global styles to this file, and also import other style files */
+@import '../node_modules/bootstrap/dist/css/bootstrap.css';
+@import 'assets/css/alertify.min.css';
+@import 'assets/css/default.css';
+@import '../node_modules/ng-pick-datetime/assets/style/picker.min.css';
+@import '../node_modules/font-awesome/css/font-awesome.min.css';
+
+.wrapper-content
+{
+  margin-right: 0px !important;
+}
+
+.card
+{
+    box-shadow: 1px 1px 13px 1px #d3d3d359;
+}
+
+
+.card-header h4
+{
+    margin: 0px !important
+}
+
+
+.user-background
+{
+  background-image: url(./assets/images/23.jpg);
+  background-size: cover
+}
+
+.card
+{
+  border-color: #00acc1;
+    box-shadow: 1px 0px 8px -1px #00acc17a;
+}
+
+.imgLogo-part
+{
+    text-align: center;
+}
+
+.imgLogo
+{
+    width: 85px;
+    position: relative;
+    top: 80px;
+}
+
+.login-background
+{
+    background-image: url(./assets/images/12.jpg);
+   background-size: cover
+
+}

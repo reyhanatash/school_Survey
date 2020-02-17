@@ -1,0 +1,43 @@
+#poll-area
+{
+    height: 610px;
+    overflow-y: scroll;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+
+
+#poll-area::-webkit-scrollbar,.modal-body::-webkit-scrollbar {
+        width: 10px;
+    }
+    
+    /* Track */
+#poll-area::-webkit-scrollbar-track,.modal-body::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey; 
+        border-radius: 10px;
+    }
+
+#poll-area::-webkit-scrollbar-thumb,.modal-body::-webkit-scrollbar-thumb {
+    background: #80808042;
+    border-radius: 14px;
+}
+
+.table
+{
+    margin-bottom: 15px !important
+}
+
+#category:focus
+{
+    outline: none;
+    box-shadow: 1px 0px 4px -1px dodgerblue;
+
+}
+
+.modal-body
+{
+    height: 400px;
+    overflow-y: scroll;
+}
+

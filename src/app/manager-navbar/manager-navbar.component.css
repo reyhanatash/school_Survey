@@ -1,0 +1,24 @@
+@import '../../assets/css/archstyle.css';
+.dashboardTitle {
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+
+.managerNav-color {
+  color: #9863da !important;
+  font-size: 18px;
+  border: 1px solid #9863da !important;
+  background-color: #8080800f !important;
+  font-size: '18px';
+}
+
+.nav-menuText {
+  color: #9863da !important;
+}
+
+.sidebar-menu {
+  border-top-color: #9863da !important;
+}
+.link :hover {
+  cursor: pointer;
+}

@@ -1,0 +1,136 @@
+@import '../../assets/css/demo.css';
+@import '../../assets/css/light-bootstrap-dashboard.css';
+
+.excellent {
+  color: darkgreen;
+}
+
+.good {
+  color: chartreuse;
+}
+
+.fair {
+  color: yellow;
+}
+
+.poor {
+  color: red;
+}
+
+.verypoor {
+  color: maroon;
+}
+
+.chart {
+  width: 100% !important;
+  height: 400px !important;
+}
+
+.table.dataTable {
+  box-shadow: 0px 0px 21px 0px lightgrey;
+  margin-bottom: 25px !important;
+  margin-top: 25px !important;
+  border-radius: 5px !important;
+  padding: 3px;
+}
+
+.eyeIcon {
+  font-size: 15px;
+  margin-top: 12px;
+}
+
+.showChart {
+  border-radius: 14px;
+  font-size: 12px;
+  border: 1px solid #007bffcf !important;
+  margin-bottom: 2px;
+  cursor: pointer;
+  float: right;
+  background-color: white;
+  cursor: pointer;
+  outline: none;
+  box-shadow: none !important;
+  color: #007bffa6 !important;
+  font-size: 14px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+.showChart:hover,
+.showChart:focus {
+
+  outline: none !important;
+
+}
+
+.titleOfEvent {
+  font-weight: bold;
+  color: #9868daf0;
+}
+
+.dropdown-menu-right {
+  margin-top: 4px !important;
+  margin-right: -6px;
+}
+
+.dropdown-menu-right a:hover {
+  background-color: #d3d3d329 !important
+}
+
+.proceesClass {
+  color: #007bff8c;
+  border:1px solid #007bffa6  !important;
+  background-color: white;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+.finishClass
+{
+   font-size: 13px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    color: #dc3545ba;
+    border: 1px solid #dc3545cc !important;
+    background-color: white;
+    margin-top: 8px;
+  
+}
+
+table.dataTable thead>tr>th
+{
+  color:#007bffb5 !important;
+  font-weight: bold
+}
+.table.dataTable
+{
+  border-bottom-left-radius: 15px !important;
+  border-bottom-right-radius: 15px !important;
+}
+
+.navbar-expand-lg
+{
+  position: fixed !important;
+  z-index: 100 !important;
+  width:82%;
+  /* background-color:#986ada26 */
+}
+
+.card-Manager {
+  margin-top: 45px;
+  border-color: transparent;
+  box-shadow: none
+}
+
+.navbar-brand:hover
+{
+  color:#9863da !important;
+
+}
+
+.question-card
+{
+  border-color:#9d70da9c !important;
+}
